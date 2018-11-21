@@ -7,9 +7,14 @@
       <aside>
         <h2>Modules</h2>
         <!-- Dynamically create buttons against data array, add click event and change button display text -->
-        <button v-for="(component, i) in componentsArray" @click="swapComponent(component)" :key="i">{{ component }}</button>
+        <button v-for="(component, i) in componentsArray" @click="swapComponent(component)" :key="i" class="module-select-btn" :class="{'module-select-btn__selected': component === visibleComponent}">{{ componentDisplayName(component) }}</button>
       </aside>
       <section class="preview-area">
+        <transition name="fade" mode="out-in">
+        <h2 v-if="!startMessage" :key="visibleComponent">
+          {{ componentDisplayName(visibleComponent) }}
+        </h2>
+        </transition>
         <div class="preview-controls" v-if="!startMessage">
           <button @click="toggleView" v-text="viewportButton"></button>
           <button @click="toggleFallback" v-text="stateButton"></button>
@@ -26,11 +31,15 @@
           <div :class="{'sensor': toggleMobileView}"></div>
           <div :class="{'speaker': toggleMobileView}"></div>
           <div :class="{'screen': toggleMobileView}">
-
+            
+            <transition name="fade" mode="out-in">
             <div v-if="visibleComponent" class="kinetic-container" :class="{'kinetic-container--is-mobile': toggleMobileView, 'kinetic-container--border': !toggleMobileView}">
               <!-- Kinetic component loads here - bound to data property -->
-              <div :is="visibleComponent" :is-kinetic-view="toggleKinetic" :is-mobile="toggleMobileView"></div>
+              <transition name="fade" mode="out-in">
+                <div :is="visibleComponent" :is-kinetic-view="toggleKinetic" :is-mobile="toggleMobileView"></div>
+              </transition>
             </div>
+            </transition>
 
           </div>
           <div :class="{'home': toggleMobileView}"></div>
@@ -43,72 +52,84 @@
 </template>
 
 <script>
-  import CarouselSlider from "./components/CarouselSlider.vue";
-  import CarouselButtons from "./components/CarouselButtons.vue";
-  import Accordion from "./components/Accordion.vue";
-  import Dropdown from "./components/Dropdown.vue";
-  import TapAndFlip from "./components/TapAndFlip.vue";
-  import Hotspot from "./components/Hotspot.vue";
-  import CSSAnim from "./components/CSSAnim.vue"
+import CarouselSlider from "./components/CarouselSlider.vue";
+import CarouselButtons from "./components/CarouselButtons.vue";
+import Accordion from "./components/Accordion.vue";
+import Dropdown from "./components/Dropdown.vue";
+import TapAndFlip from "./components/TapAndFlip.vue";
+import Hotspot from "./components/Hotspot.vue";
+import CSSAnim from "./components/CSSAnim.vue";
 
-  export default {
-    name: "app",
-    components: {
-      "Slider Carousel": CarouselSlider,
-      "Button Carousel": CarouselButtons,
-      "Accordion Content": Accordion,
-      "Dropdown Menu": Dropdown,
-      "Tap and Flip": TapAndFlip,
-      "Hotspots": Hotspot,
-      "CSS Animations": CSSAnim
+export default {
+  name: "app",
+  components: {
+    "Slider-Carousel": CarouselSlider,
+    "Button-Carousel": CarouselButtons,
+    "Accordion-Content": Accordion,
+    "Dropdown-Menu": Dropdown,
+    "Tap-and-Flip": TapAndFlip,
+    Hotspots: Hotspot,
+    "CSS-Animations": CSSAnim
+  },
+  data() {
+    return {
+      viewportButton: "",
+      stateButton: "",
+      startMessage: true,
+      visibleComponent: null,
+      toggleMobileView: null,
+      toggleKinetic: null,
+      componentsArray: [
+        "Slider-Carousel",
+        "Button-Carousel",
+        "Accordion-Content",
+        "Dropdown-Menu",
+        "Tap-and-Flip",
+        "Hotspots",
+        "CSS-Animations"
+      ],
+      deviceViewType: "iphone8"
+    };
+  },
+  methods: {
+    swapComponent(component) {
+      // hide start message
+      this.startMessage = false;
+      // set kinetic view to true by default on loading new component
+      this.toggleKinetic = true;
+      // set state button text
+      this.stateButton = "Switch to Fallback";
+      // set desktop view
+      this.toggleMobileView = false;
+      // set desktop view button
+      this.viewportButton = "Switch to Mobile";
+      // change visible component
+      this.visibleComponent = component;
     },
-    data() {
-      return {
-        viewportButton: '',
-        stateButton: '',
-        startMessage: true,
-        visibleComponent: null,
-        toggleMobileView: null,
-        toggleKinetic: null,
-        componentsArray: ["Slider Carousel", "Button Carousel", "Accordion Content","Dropdown Menu","Tap and Flip","Hotspots", "CSS Animations"],
-        deviceViewType: 'iphone8'
-      };
+    componentDisplayName(name) {
+      // remove dashes from component names
+      return name.replace(/-/g, " ");
     },
-    methods: {
-      swapComponent(component) {
-        // hide start message
-        this.startMessage = false;
-        // set kinetic view to true by default on loading new component
-        this.toggleKinetic = true;
-        // set state button text
-        this.stateButton = 'Switch to Fallback';
-        // set desktop view
-        this.toggleMobileView = false;
-        // set desktop view button
-        this.viewportButton = 'Switch to Mobile';
-        // change visible component
-        this.visibleComponent = component;
-      },
-      buttonDisplayName(name) {
-        // chops off kinetic-
-        return name.slice(8);
-      },
-      toggleView() {
-        // switch between desktop and mobile sizes for container and change button text
-        this.toggleMobileView = !this.toggleMobileView;
-        this.toggleMobileView ? this.viewportButton = 'Switch to Desktop' : this.viewportButton = 'Switch to Mobile';
-      },
-      toggleFallback() {
-        // toggle kinetic and fallback views in component and change button text
-        this.toggleKinetic = !this.toggleKinetic;
-        this.toggleKinetic ? this.stateButton = 'Switch to Fallback' : this.stateButton = 'Switch to Kinetic';
-      }
+    toggleView() {
+      // switch between desktop and mobile sizes for container and change button text
+      this.toggleMobileView = !this.toggleMobileView;
+      this.toggleMobileView
+        ? (this.viewportButton = "Switch to Desktop")
+        : (this.viewportButton = "Switch to Mobile");
+    },
+    toggleFallback() {
+      // toggle kinetic and fallback views in component and change button text
+      this.toggleKinetic = !this.toggleKinetic;
+      this.toggleKinetic
+        ? (this.stateButton = "Switch to Fallback")
+        : (this.stateButton = "Switch to Kinetic");
     }
-  };
+  }
+};
 </script>
 
 <style>
-@import url('./assets/devices.min.css');
+@import url("./assets/devices.min.css");
 
 body {
   margin: 0;
@@ -146,7 +167,7 @@ header {
 .display-area {
   display: grid;
   height: calc(100vh - 67px);
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 450px 1fr;
 }
 
 aside {
@@ -158,19 +179,30 @@ aside h2 {
   margin-top: 0;
 }
 
-aside button {
+.module-select-btn {
   width: 100%;
   padding: 10px 0px;
   margin-bottom: 20px;
   border: 1px solid grey;
+  background: #f0f0f0;
   border-radius: 5px;
+}
+.module-select-btn:hover {
+  background-color: lightgray;
+  border: 1px solid darkgray;
+}
+.module-select-btn__selected,
+.module-select-btn__selected:hover {
+  border: 1px solid darkslategray;
+  color: white;
+  background-color: slategray;
 }
 
 .preview-controls {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 20px;
+  padding: 0px 20px 20px 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid lightsalmon;
 }
@@ -179,6 +211,10 @@ aside button {
   padding: 10px 15px;
   border: 1px solid grey;
   border-radius: 5px;
+}
+.preview-controls button:hover {
+  background-color: lightgray;
+  border: 1px solid darkgray;
 }
 
 .kinetic-container {
@@ -198,4 +234,12 @@ aside button {
   height: 667px;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.1s linear;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

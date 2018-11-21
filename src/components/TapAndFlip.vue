@@ -65,7 +65,7 @@
 <script>
 import MailHeader from "./MailHeader.vue";
 export default {
-  name: 'TapAndFlip',
+  name: "TapAndFlip",
   components: {
     "mail-header": MailHeader
   },
@@ -80,7 +80,7 @@ export default {
       flipHorizontal: false,
       flipVertical: false,
       flipDiagonal: false
-    }
+    };
   },
   watch: {
     isKineticView() {
@@ -90,63 +90,63 @@ export default {
       this.mobile = this.isMobile;
     }
   }
-}
+};
 </script>
 
 <style scoped>
-  .kinetic {
-    perspective: 2000px;
-  }
+.kinetic {
+  perspective: 2000px;
+}
 
-  .card {
-    /* Adjust speed of flip here */
-    transition: all 0.6s ease-in-out;
-    transform-style: preserve-3d;
-    height: 320px;
-    position: relative;
-  }
-  .card__face {
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    height: 320px;
-    position: absolute;
-  }
+.card {
+  /* Adjust speed of flip here */
+  transition: all 0.6s ease-in-out;
+  transform-style: preserve-3d;
+  height: 320px;
+  position: relative;
+}
+.card__face {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  height: 320px;
+  position: absolute;
+}
 
-  .card__front {
-    transform: rotateY(0deg);
-  }
+.card__front {
+  transform: rotateY(0deg);
+}
 
-  .card__back {
-    transform: rotateY(180deg);
-    background-color:lightgray;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.card__back {
+  transform: rotateY(180deg);
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .card--horizontal-flip {
-    transform: rotateY(-180deg)
-  }
+.card--horizontal-flip {
+  transform: rotateY(-180deg);
+}
 
-  .card__back--vertical {
-    transform: rotateY(180deg) rotateZ(180deg);
-  }
+.card__back--vertical {
+  transform: rotateY(180deg) rotateZ(180deg);
+}
 
-  .card--vertical-flip {
-    transform-origin: 100% 160px;
-    transform: rotateX(-180deg);
-  }
+.card--vertical-flip {
+  transform-origin: 100% 160px;
+  transform: rotateX(-180deg);
+}
 
-  .card__back--diagonal {
-    transform: rotateY(180deg) rotateZ(90deg);
-  }
-  .card--diagonal-flip {
-    transform: rotate3d(-1,-1,0,180deg);
-  }
+.card__back--diagonal {
+  transform: rotateY(180deg) rotateZ(90deg);
+}
+.card--diagonal-flip {
+  transform: rotate3d(-1, -1, 0, 180deg);
+}
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+img {
+  max-width: 100%;
+  height: auto;
+}
 </style>

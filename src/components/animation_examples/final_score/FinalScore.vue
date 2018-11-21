@@ -31,6 +31,10 @@ export default {
     isKineticView: Boolean,
     isMobile: Boolean
   },
+  mounted() {
+    this.kinetic = this.isKineticView;
+    this.mobile = this.isMobile;
+  },
   data() {
     return {
       kinetic: null,

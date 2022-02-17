@@ -10,7 +10,7 @@
       </section>
       <div class="card" :class="{'card--horizontal-flip':flipHorizontal}" @click="flipHorizontal = !flipHorizontal">
         <div class="card__face card__front">
-          <img :src="[mobile ? 'https://placehold.it/375x320/7763c6/ffffff?text=Horizontal+Flip+.+Card+front' : 'https://placehold.it/600x320/7763c6/ffffff?text=Horizontal+Flip+.+Card+front']" alt="" class="card__image">
+          <img :src="[mobile ? 'https://via.placeholder.com/375x320/7763c6/ffffff?text=Horizontal+Flip+.+Card+front' : 'https://via.placeholder.com/600x320/7763c6/ffffff?text=Horizontal+Flip+.+Card+front']" alt="" class="card__image">
         </div>
         <div class="card__face card__back">
           <h4>Horizontal flip</h4>
@@ -19,7 +19,7 @@
       </div>
       <div class="card" :class="{'card--vertical-flip':flipVertical}" @click="flipVertical = !flipVertical">
         <div class="card__face card__front">
-          <img :src="[mobile ? 'https://placehold.it/375x320/f78e03/ffffff?text=Vertical+Flip+.+Card+front' : 'https://placehold.it/600x320/f78e03/ffffff?text=Vertical+Flip+.+Card+front']" alt="" class="card__image">
+          <img :src="[mobile ? 'https://via.placeholder.com/375x320/f78e03/ffffff?text=Vertical+Flip+.+Card+front' : 'https://via.placeholder.com/600x320/f78e03/ffffff?text=Vertical+Flip+.+Card+front']" alt="" class="card__image">
         </div>
         <div class="card__face card__back card__back--vertical">
           <h4>Vertical flip</h4>
@@ -28,7 +28,7 @@
       </div>
       <div class="card" :class="{'card--diagonal-flip':flipDiagonal}" @click="flipDiagonal = !flipDiagonal">
         <div class="card__face card__front">
-          <img :src="[mobile ? 'https://placehold.it/375x320/ef332b/ffffff?text=Diagonal+Flip+.+Card+front' : 'https://placehold.it/600x320/ef332b/ffffff?text=Diagonal+Flip+.+Card+front']" alt="" class="card__image">
+          <img :src="[mobile ? 'https://via.placeholder.com/375x320/ef332b/ffffff?text=Diagonal+Flip+.+Card+front' : 'https://via.placeholder.com/600x320/ef332b/ffffff?text=Diagonal+Flip+.+Card+front']" alt="" class="card__image">
         </div>
         <div class="card__face card__back card__back--diagonal">
           <h4>Diagonal flip</h4>
@@ -38,7 +38,7 @@
     </section>
     <section class="fallback" v-else>
       <div>
-        <img src="https://placehold.it/600x320?text=Image" alt="" class="card__image">
+        <img src="https://via.placeholder.com/600x320?text=Image" alt="" class="card__image">
         <div class="card__content">
           <h4>Horizontal flip</h4>
           <p>This is the backface content<br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aspernatur sint exercitationem consectetur veniam odit?</p>

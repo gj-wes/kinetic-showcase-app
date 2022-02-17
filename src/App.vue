@@ -16,8 +16,8 @@
         </h2>
         </transition>
         <div class="preview-controls" v-if="!startMessage">
-          <button @click="toggleView" v-text="viewportButton"></button>
-          <button @click="toggleFallback" v-text="stateButton"></button>
+          <button @click="toggleView" v-text="viewportButton" class="module-select-btn module-select-btn--preview"></button>
+          <button @click="toggleFallback" v-text="stateButton" class="module-select-btn module-select-btn--preview"></button>
         </div>
         <!-- Message visible before any component loaded -->
         <p v-if="startMessage">Select a component on the left to load the preview</p>
@@ -157,17 +157,18 @@ header {
   text-align: center;
   color: white;
   background: linear-gradient(
-    to right,
-    rgba(247, 145, 2, 1) 0%,
-    rgba(239, 45, 45, 1) 50%,
-    rgba(24, 88, 226, 1) 100%
-  );
+    to right, 
+    rgb(255, 158, 0) 0%, 
+    rgb(255, 0, 0) 25%, 
+    rgb(181, 0, 125) 50%, 
+    rgb(33, 66, 156) 75%, 
+    rgb(0, 113, 255) 100%)
 }
 
 .display-area {
   display: grid;
   height: calc(100vh - 67px);
-  grid-template-columns: 450px 1fr;
+  grid-template-columns: minmax(auto, 400px) 1fr;
 }
 
 aside {
@@ -181,21 +182,51 @@ aside h2 {
 
 .module-select-btn {
   width: 100%;
-  padding: 10px 0px;
-  margin-bottom: 20px;
-  border: 1px solid grey;
-  background: #f0f0f0;
-  border-radius: 5px;
+  -moz-box-align: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-weight: bold;
+  -moz-box-pack: center;
+  justify-content: center;
+  line-height: 24px;
+  outline: currentcolor none medium;
+  position: relative;
+  text-align: center;
+  transition-duration: 300ms;
+  transition-property: background, color, box-shadow;
+  transition-timing-function: ease;
+  background-color: rgb(0, 15, 245);
+  background-image: linear-gradient(-1deg, transparent 49%, rgba(255, 255, 255, 0.15) 50%, rgba(225, 225, 225, 0));
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-family: inherit;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+}
+.module-select-btn::after {
+  content: "";
+  border: 2px solid rgb(0, 160, 255);
+  border-radius: 8px;
+  inset: -5px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 150ms linear 0s;
 }
 .module-select-btn:hover {
-  background-color: lightgray;
-  border: 1px solid darkgray;
+  background-color: rgb(0, 15, 190);
 }
 .module-select-btn__selected,
 .module-select-btn__selected:hover {
-  border: 1px solid darkslategray;
-  color: white;
-  background-color: slategray;
+  background-color: rgb(0, 15, 190);
+}
+
+.module-select-btn--preview {
+  width: auto;
 }
 
 .preview-controls {
@@ -205,16 +236,6 @@ aside h2 {
   padding: 0px 20px 20px 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid lightsalmon;
-}
-
-.preview-controls button {
-  padding: 10px 15px;
-  border: 1px solid grey;
-  border-radius: 5px;
-}
-.preview-controls button:hover {
-  background-color: lightgray;
-  border: 1px solid darkgray;
 }
 
 .kinetic-container {

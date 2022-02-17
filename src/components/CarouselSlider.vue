@@ -4,27 +4,27 @@
     <section class="kinetic" v-if="kinetic">
       <div class="slides" :style="{transform: 'translateX('+slideTranslate+'%)'}">
         <div class="slide">
-          <img src="https://placehold.it/600x350?text=Slide+1" alt="">
+          <img src="https://via.placeholder.com/600x350?text=Slide+1" alt="">
           <div class="right" @click="slideTrack('-25')">&gt;</div>
         </div>
         <div class="slide">
-          <img src="https://placehold.it/600x350?text=Slide+2" alt="">
+          <img src="https://via.placeholder.com/600x350?text=Slide+2" alt="">
           <div class="left" @click="slideTrack('0')">&lt;</div>
           <div class="right" @click="slideTrack('-50')">&gt;</div>
         </div>
         <div class="slide">
-          <img src="https://placehold.it/600x350?text=Slide+3" alt="">
+          <img src="https://via.placeholder.com/600x350?text=Slide+3" alt="">
           <div class="left" @click="slideTrack('-25')">&lt;</div>
           <div class="right" @click="slideTrack('-75')">&gt;</div>
         </div>
         <div class="slide">
-          <img src="https://placehold.it/600x350?text=Slide+4" alt="">
+          <img src="https://via.placeholder.com/600x350?text=Slide+4" alt="">
           <div class="left" @click="slideTrack('-50')">&lt;</div>
         </div>
       </div>
     </section>
     <section class="fallback" v-else>
-      <img src="https://placehold.it/600x350?text=Fallback+GIF" alt="">
+      <img src="https://via.placeholder.com/600x350?text=Fallback+GIF" alt="">
     </section>
     <section>
       <h1>Slider Carousel</h1>

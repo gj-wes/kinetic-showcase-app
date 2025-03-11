@@ -36,7 +36,7 @@
             <div v-if="visibleComponent" class="kinetic-container" :class="{'kinetic-container--is-mobile': toggleMobileView, 'kinetic-container--border': !toggleMobileView}">
               <!-- Kinetic component loads here - bound to data property -->
               <transition name="fade" mode="out-in">
-                <div :is="visibleComponent" :is-kinetic-view="toggleKinetic" :is-mobile="toggleMobileView"></div>
+                <component :is="visibleComponent" :is-kinetic-view="toggleKinetic" :is-mobile="toggleMobileView"></component>
               </transition>
             </div>
             </transition>
@@ -52,13 +52,13 @@
 </template>
 
 <script>
-import CarouselSlider from "./components/CarouselSlider.vue";
-import CarouselButtons from "./components/CarouselButtons.vue";
-import Accordion from "./components/Accordion.vue";
-import Dropdown from "./components/Dropdown.vue";
-import TapAndFlip from "./components/TapAndFlip.vue";
-import Hotspot from "./components/Hotspot.vue";
-import CSSAnim from "./components/CSSAnim.vue";
+import CarouselSlider from "@/components/CarouselSlider.vue";
+import CarouselButtons from "@/components/CarouselButtons.vue";
+import Accordion from "@/components/Accordion.vue";
+import Dropdown from "@/components/Dropdown.vue";
+import TapAndFlip from "@/components/TapAndFlip.vue";
+import Hotspot from "@/components/Hotspot.vue";
+import CSSAnim from "@/components/CSSAnim.vue";
 
 export default {
   name: "app",
@@ -129,7 +129,7 @@ export default {
 </script>
 
 <style>
-@import url("./assets/devices.min.css");
+@import url("@/assets/devices.min.css");
 
 body {
   margin: 0;
@@ -156,13 +156,14 @@ header {
   font-size: 2rem;
   text-align: center;
   color: white;
-  background: linear-gradient(
-    to right, 
-    rgb(255, 158, 0) 0%, 
-    rgb(255, 0, 0) 25%, 
-    rgb(181, 0, 125) 50%, 
-    rgb(33, 66, 156) 75%, 
-    rgb(0, 113, 255) 100%)
+  background: linear-gradient(to right, 
+    rgb(255, 140, 0) 5%, 
+    rgb(248, 0, 50) 25%, 
+    rgb(255, 0, 160) 45%, 
+    rgb(140, 40, 255) 65%, 
+    rgb(0, 35, 255) 82%, 
+    rgb(25, 160, 255) 100%
+  );
 }
 
 .display-area {

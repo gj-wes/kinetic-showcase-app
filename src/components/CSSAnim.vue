@@ -8,7 +8,7 @@
       <option>Ryder Cup 2018</option>
       <option>Bulletproof</option>
     </select>
-    <div :is="visibleAnimation" :is-kinetic-view="kinetic" :is-mobile="mobile"></div>
+    <component :is="visibleAnimation" :is-kinetic-view="kinetic" :is-mobile="mobile"></component>
   </div>
 </template>
 <script>

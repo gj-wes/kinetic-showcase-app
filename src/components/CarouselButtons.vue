@@ -23,7 +23,7 @@
       </div>
     </section>
     <section class="fallback" v-else>
-      <img src="https://via.placeholder.com/600x350?text=Fallback+GIF" alt="">
+      <img src="https://placehold.co/600x350?text=Fallback+GIF" alt="">
     </section>
     <section>
       <h1>Button Carousel</h1>
@@ -88,7 +88,7 @@ export default {
     min-height: 300px;
     display: flex;
     flex-direction: row-reverse;
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0, 0, 0, 0.4)), url('https://via.placeholder.com/600x300?text=Background');
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0, 0, 0, 0.4)), url('https://placehold.co/600x300?text=Background');
     background-size: 100% 100%;
   }
   .kinetic--is-mobile {

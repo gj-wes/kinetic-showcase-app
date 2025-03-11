@@ -23,7 +23,7 @@
       <div class="menu__item">Item 4</div>
     </section>
     <section class="hero">
-      <img src="https://via.placeholder.com/600x300?text=Hero" alt="">
+      <img src="https://placehold.co/600x300?text=Hero" alt="">
       <h1>Dropdown Menu</h1>
       <p>
         This menu looks best on <u>mobile</u> view.

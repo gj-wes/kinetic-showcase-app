@@ -3,12 +3,12 @@
     <mail-header v-if="mobile"></mail-header>
     <section class="kinetic" v-if="kinetic">
       <section class="spots" :class="{'content--is-mobile': mobile, 'spots__content--is-open': isPodOpen}">
-        <div @click="showPod1" :class="{'spots--mobile': mobile}"><img src="https://via.placeholder.com/150x150" alt=""><div class="indicator">+</div></div>
-        <div @click="showPod2" :class="{'spots--mobile': mobile}"><img src="https://via.placeholder.com/150x150" alt=""><div class="indicator">+</div></div>
-        <div @click="showPod3" :class="{'spots--mobile': mobile}"><img src="https://via.placeholder.com/150x150" alt=""><div class="indicator">+</div></div>
+        <div @click="showPod1" :class="{'spots--mobile': mobile}"><img src="https://placehold.co/150x150" alt=""><div class="indicator">+</div></div>
+        <div @click="showPod2" :class="{'spots--mobile': mobile}"><img src="https://placehold.co/150x150" alt=""><div class="indicator">+</div></div>
+        <div @click="showPod3" :class="{'spots--mobile': mobile}"><img src="https://placehold.co/150x150" alt=""><div class="indicator">+</div></div>
       </section>
       <section class="content content__kinetic bg-yellow" :class="{'content--is-mobile': mobile, 'content--is-open': pod1Visible}">
-        <img src="https://via.placeholder.com/300x300?text=Pod1+Image" alt="">
+        <img src="https://placehold.co/300x300?text=Pod1+Image" alt="">
         <div>
           <div class="close" @click="closePod">X</div>
           <h3>Lorem, ipsum dolor.</h3>
@@ -16,7 +16,7 @@
         </div>
       </section>
       <section class="content content__kinetic bg-coral" :class="{'content--is-mobile': mobile, 'content--is-open': pod2Visible}">
-        <img src="https://via.placeholder.com/300x300?text=Pod2+Image" alt="">
+        <img src="https://placehold.co/300x300?text=Pod2+Image" alt="">
         <div>
           <div class="close" @click="closePod">X</div>
           <h3>Nulla, facere maxime.</h3>
@@ -24,7 +24,7 @@
         </div>
       </section>
       <section class="content content__kinetic bg-blue" :class="{'content--is-mobile': mobile, 'content--is-open': pod3Visible}">
-        <img src="https://via.placeholder.com/300x300?text=Pod3+Image" alt="">
+        <img src="https://placehold.co/300x300?text=Pod3+Image" alt="">
         <div>
           <div class="close" @click="closePod">X</div>
           <h3>Fugit, earum sint.</h3>
@@ -34,21 +34,21 @@
     </section>
     <section class="fallback" v-else>
       <section class="content bg-yellow" :class="{'content--is-mobile': mobile}">
-        <img src="https://via.placeholder.com/300x300?text=Pod1+Image" alt="">
+        <img src="https://placehold.co/300x300?text=Pod1+Image" alt="">
         <div>
           <h3>Lorem, ipsum dolor.</h3>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate, pariatur!</p>
         </div>
       </section>
       <section class="content bg-coral" :class="{'content--is-mobile': mobile}">
-        <img src="https://via.placeholder.com/300x300?text=Pod2+Image" alt="">
+        <img src="https://placehold.co/300x300?text=Pod2+Image" alt="">
         <div>
           <h3>Nulla, facere maxime.</h3>
           <p>Saepe, cupiditate modi nesciunt aperiam consequatur blanditiis debitis obcaecati pariatur?</p>
         </div>
       </section>
       <section class="content bg-blue" :class="{'content--is-mobile': mobile}">
-        <img src="https://via.placeholder.com/300x300?text=Pod3+Image" alt="">
+        <img src="https://placehold.co/300x300?text=Pod3+Image" alt="">
         <div>
           <h3>Fugit, earum sint.</h3>
           <p>Nam voluptatibus aspernatur corrupti commodi ipsam iste praesentium quis veniam!</p>
